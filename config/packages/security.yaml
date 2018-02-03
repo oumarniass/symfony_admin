@@ -1,0 +1,26 @@
+# config/packages/security.yaml
+security:
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+    providers:
+        in_memory:
+            memory:
+                users:
+                    test_user:
+                        password: test_password
+                        roles: 'ROLE_USER'
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: ~
+            # https://symfony.com/doc/current/security/form_login_setup.html
+            form_login:
+                login_path: connexion
+                check_path: connexion
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path: /deconnexion
+                target: /

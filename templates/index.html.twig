@@ -1,0 +1,11 @@
+{% extends('base.html.twig') %}
+
+{% block body %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <p>Connecté en tant que: {{ app.user.username }}</p>
+        <p><a href="{{path('logout')}}">Sé déconnecter</a></p>
+    {% else %}
+        <a href="{{path(('connexion'))}}">Page de connexion</a>
+    {% endif %}
+{% endblock %}
