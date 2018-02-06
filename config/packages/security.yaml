@@ -1,21 +1,21 @@
 # config/packages/security.yaml
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        App\Entity\User:
+            algorithm: bcrypt
     providers:
-        in_memory:
-            memory:
-                users:
-                    test_user:
-                        password: test_password
-                        roles: 'ROLE_USER'
+        our_db_provider:
+            entity:
+                class: App\Entity\User
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: ~
+            pattern:    ^/
+            http_basic: ~
+            provider: our_db_provider
             # https://symfony.com/doc/current/security/form_login_setup.html
             form_login:
                 login_path: connexion
@@ -24,3 +24,13 @@ security:
             logout:
                 path: /deconnexion
                 target: /
+            switch_user: ~
+
+    role_hierarchy:
+        # un membre avec le ROLE_ADMIN aura également le ROLE_USER
+        ROLE_ADMIN: ROLE_USER
+        # Le ROLE_SUPER_ADMIN avec le ROLE_ALLOWED_TO_SWITCH qui permet de s'authentifier en se faisant passer pour n'importe quel membre. Particulièrement utile pour débugger son code.
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }

@@ -17,4 +17,12 @@ class AppController extends Controller
                 
         ]);
     }
+
+    /**
+     * @Route("/admin")
+     */
+    public function admin()
+    {
+        return new Response("Bienvenue dans l'espace admin!");
+    }
 }

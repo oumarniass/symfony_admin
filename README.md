@@ -1,8 +1,42 @@
 # espace-membre-sf4
+
 création d'un espace membre sur Symfony 4, from scratch
 
-### installer les dépendances
+### 1) installer les dépendances
+
 composer install
 
-### lancer le serveur
+### 2) créer la base de données, mettre à jour le schéma
+
+modifier vos informations de connexion à la BDD en modifiant .env puis, en ligne de commande:
+bin/console doctrine:database:create 
+
+### 3) Charger les fixtures
+
+bin/console doctrine:fixtures:load
+
+Il y a 3 utilisateurs initialisés grâce aux fixtures. un user actif, un user inactif et 1 admin.
+
+##### user actif
+username: user_enabled
+email: user_enabled@test.fr
+password: test
+isActive: true
+roles: ROLE_USER
+
+##### user inactif
+username: user_disabled
+email: user_disabled@test.fr
+password: test
+isActive: false
+roles: ROLE_USER
+
+##### admin
+username: admin
+email: admin@test.fr
+password: test
+isActive: true
+roles: ROLE_ADMIN, ROLE_USER
+
+### 4) lancer le serveur
 bin/console server:start
