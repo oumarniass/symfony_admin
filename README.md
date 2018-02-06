@@ -8,7 +8,8 @@ création d'un espace membre sur Symfony 4, from scratch
 
 ### 2) créer la base de données, mettre à jour le schéma
 
-modifier vos informations de connexion à la BDD en modifiant .env puis, en ligne de commande:  
+modifier vos informations de connexion à la BDD en modifiant .env puis, en ligne de commande:
+    
     bin/console doctrine:database:create
 
 ### 3) Charger les fixtures
