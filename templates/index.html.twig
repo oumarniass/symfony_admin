@@ -6,6 +6,10 @@
         <p>Connecté en tant que: {{ app.user.username }}</p>
         <p><a href="{{path('logout')}}">Sé déconnecter</a></p>
     {% else %}
-        <a href="{{path(('connexion'))}}">Page de connexion</a>
+        <p>
+            <a href="{{path(('connexion'))}}">Page de connexion</a>
+        </p>
+        <p><a href="{{path('user_registration')}}">Page d'inscription</a></p>
+
     {% endif %}
 {% endblock %}

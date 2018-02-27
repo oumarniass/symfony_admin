@@ -47,19 +47,24 @@ class User implements AdvancedUserInterface, \Serializable
 	 */
 	private $isActive;
 
-	// ...
 	/**
 	 * @var array
 	 * @ORM\Column(type="array")
 	 */
 	private $roles;
 
+    /**
+     * @Assert\NotBlank(groups={"registration"})
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
+     
 	public function __construct()
 	{
 		$this->isActive = true;
 		$this->roles = ['ROLE_USER'];
 	}
-
+    
 	/*
 	 * Get id
 	 */
@@ -207,4 +212,14 @@ class User implements AdvancedUserInterface, \Serializable
 			// $this->salt
 		) = unserialize($serialized);
 	}
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+ 
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
+    }
 }
