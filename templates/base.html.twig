@@ -1,46 +1,55 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>
-            {% block title %}
-                Welcome!
-            {% endblock %}
-        </title>
-        {% block stylesheets %}
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" />
-        {% endblock %}
-    </head>
-    <body>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}
+				Welcome!
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" />
+		{% endblock %}
+	</head>
+	<body>
 
-        {% block menu %}
-            <ul class="menu align-right">
+		{% block menu %}
+			<ul class="menu align-right">
 
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{path('app_app_admin')}}">Espace admin</a>
-                {% endif %}
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <li class="menu-text">Connecté en tant que: {{ app.user.username }}</li>
-                    <li><a href="{{path('logout')}}">Sé déconnecter</a></li>
-                {% else %}
-                    <li>
-                        <a href="{{path(('connexion'))}}">Page de connexion</a>
-                    </li>
-                    <li>
-                        <a href="{{path('user_registration')}}">Page d'inscription</a>
-                    </li>
+				{% if is_granted('ROLE_ADMIN') %}
+					<a href="{{path('app_app_admin')}}">Espace admin</a>
+				{% endif %}
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					<li class="menu-text">Connecté en tant que: {{ app.user.username }}</li>
+					<li><a href="{{path('logout')}}">Sé déconnecter</a></li>
+				{% else %}
+					<li>
+						<a href="{{path(('connexion'))}}">Page de connexion</a>
+					</li>
+					<li>
+						<a href="{{path('user_registration')}}">Page d'inscription</a>
+					</li>
 
-                {% endif %}
+				{% endif %}
 
-            </ul>
+			</ul>
 
-        {% endblock %}
+		{% endblock %}
 
 
-        {% block body %}
-        {% endblock %}
+		{% for label, messages in app.flashes %}
+			{% for message in messages %}
 
-        {% block javascripts %}
-        {% endblock %}
-    </body>
+				<p class="text-center">
+				{{message}}
+				</p>
+			{% endfor %}
+		{% endfor %}
+
+{% block body %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+	</body>
 </html>

@@ -18,8 +18,10 @@ class RegistrationController extends Controller
     {
         // création du formulaire
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
- 
+        // instancie le formulaire avec les contraintes par défaut, + la contrainte registration pour que la saisie du mot de passe soit obligatoire
+        $form = $this->createForm(UserType::class, $user,[
+           'validation_groups' => array('User', 'registration'),
+        ]);
          
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -33,7 +35,7 @@ class RegistrationController extends Controller
             $em->persist($user);
             $em->flush();
  
-            return $this->redirectToRoute('app');
+            return $this->redirectToRoute('connexion');
         }
  
         return $this->render(

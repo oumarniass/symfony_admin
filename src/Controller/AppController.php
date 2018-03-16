@@ -14,7 +14,7 @@ class AppController extends Controller
     public function index()
     {
         return $this->render('index.html.twig', [
-                
+
         ]);
     }
 
@@ -24,17 +24,8 @@ class AppController extends Controller
     public function admin()
     {
         return $this->render('admin.html.twig', [
-                
+
         ]);
     }
 
-    /**
-     * @Route("/mon-espace", name="account")
-     */
-    public function account()
-    {
-        return $this->render('account.html.twig', [
-                
-        ]);
-    }
 }
