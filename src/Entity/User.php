@@ -3,9 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM ;
-use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Table(name="app_users")
@@ -13,7 +13,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(fields="email", message="Cet email est déjà enregistré en base.")
  * @UniqueEntity(fields="username", message="Cet identifiant est déjà enregistré en base")
  */
-class User implements AdvancedUserInterface, \Serializable
+class User implements UserInterface, \Serializable
 {
 	/**
 	 * @ORM\Column(type="integer")
@@ -159,32 +159,9 @@ class User implements AdvancedUserInterface, \Serializable
 		$this->roles = $roles;
 		return $this;
 	} 
+
 	public function eraseCredentials()
 	{
-	}
-
-	/* les 3 méthodes suivantes renvoient simplement true. 
-	Elles sont nécessaires pour implémenter AdvancedUserInterface,
-	permettant d'intégrer la méthode isEnabled, pour activer ou bloquer un membre en fonction de la propriété isActive. */
-
-	public function isAccountNonExpired()
-	{
-		return true;
-	}
-
-	public function isAccountNonLocked()
-	{
-		return true;
-	}
-
-	public function isCredentialsNonExpired()
-	{
-		return true;
-	}
-
-	public function isEnabled()
-	{
-		return $this->isActive;
 	}
 
 	/** @see \Serializable::serialize() */

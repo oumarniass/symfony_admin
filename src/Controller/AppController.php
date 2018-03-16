@@ -23,6 +23,18 @@ class AppController extends Controller
      */
     public function admin()
     {
-        return new Response("Bienvenue dans l'espace admin!");
+        return $this->render('admin.html.twig', [
+                
+        ]);
+    }
+
+    /**
+     * @Route("/mon-espace", name="account")
+     */
+    public function account()
+    {
+        return $this->render('account.html.twig', [
+                
+        ]);
     }
 }

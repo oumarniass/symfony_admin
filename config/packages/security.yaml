@@ -15,6 +15,7 @@ security:
             anonymous: ~
             pattern:    ^/
             http_basic: ~
+            user_checker: App\Security\UserChecker
             provider: our_db_provider
             # https://symfony.com/doc/current/security/form_login_setup.html
             form_login:
