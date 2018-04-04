@@ -2,15 +2,16 @@
 
 {% block body %}
 
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
 
     <h1 class="text-center">Connexion</h1>
     <form action="{{ path('connexion') }}" method="post">
         <div class="grid-container">
             <div class="grid-x grid-padding-x">
                 <div class="small-12 medium-6 medium-offset-3 large-4 large-offset-4 cell">
+                    {% if error %}
+                        <div class="callout warning">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
                     <label for="username">Identifiant
                         <input type="text" id="username" name="_username" value="{{ last_username }}" />
                     </label>
@@ -19,7 +20,12 @@
                     <label for="password">Mot de passe:
                         <input type="password" id="password" name="_password" />
                     </label>
+                    <p>
+                        <a href="{{path('request_resetting')}}">Mot de passe oublié ?</a>
+                    </p>
+                    
                 </div>
+
                 <div class="small-12 medium-6 medium-offset-3 large-4 large-offset-4 cell">
                     <input type="hidden" name="_target_path" value="{{ path('account') }}" />
 

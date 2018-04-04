@@ -34,6 +34,8 @@ class RegistrationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
+
+            $request->getSession()->getFlashBag()->add('success', "Votre compte est enregistré.");
  
             return $this->redirectToRoute('connexion');
         }
