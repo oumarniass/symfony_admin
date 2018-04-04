@@ -1,6 +1,6 @@
-# espace-membre-sf4
+# Création d'un espace membre sur Symfony 4, from scratch 
 
-création d'un espace membre sur Symfony 4, from scratch
+
 
 ### 1) installer les dépendances
 
