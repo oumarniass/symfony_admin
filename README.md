@@ -39,5 +39,12 @@ password: test
 isActive: true  
 roles: ROLE_ADMIN, ROLE_USER  
 
-### 4) lancer le serveur
+### 4) configurer swiftmailer
+
+Si vous voulez tester la réinitialisation du mot de passe, il vous faut renseigner le paramètre MAILER_URL présent dans le fichier .env à la racine du projet.
+
+### 5) lancer le serveur
     bin/console server:start
+
+
+
