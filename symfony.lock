@@ -53,6 +53,9 @@
             "ref": "c1431086fec31f17fbcfe6d6d7e92059458facc1"
         }
     },
+    "doctrine/event-manager": {
+        "version": "v1.0.0"
+    },
     "doctrine/inflector": {
         "version": "v1.3.0"
     },
@@ -68,6 +71,12 @@
     "doctrine/orm": {
         "version": "v2.6.0"
     },
+    "doctrine/persistence": {
+        "version": "v1.0.1"
+    },
+    "doctrine/reflection": {
+        "version": "v1.0.0"
+    },
     "easycorp/easyadmin-bundle": {
         "version": "1.17",
         "recipe": {
@@ -82,6 +91,9 @@
     },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "nikic/php-parser": {
+        "version": "v4.1.0"
     },
     "ocramius/package-versions": {
         "version": "1.2.0"
@@ -206,6 +218,9 @@
     "symfony/orm-pack": {
         "version": "v1.0.5"
     },
+    "symfony/polyfill-ctype": {
+        "version": "v1.10.0"
+    },
     "symfony/polyfill-intl-icu": {
         "version": "v1.7.0"
     },
@@ -232,9 +247,6 @@
             "version": "4.0",
             "ref": "cda8b550123383d25827705d05a42acf6819fe4e"
         }
-    },
-    "symfony/security": {
-        "version": "v3.4.4"
     },
     "symfony/security-bundle": {
         "version": "3.3",
@@ -303,6 +315,15 @@
             "branch": "master",
             "version": "3.3",
             "ref": "c72d107d077f1654428edaed69415d0228c1aefe"
+        }
+    },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "4c97a884bc54a4e66bb2d0785ca855141880b6a8"
         }
     },
     "symfony/yaml": {

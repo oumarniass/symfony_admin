@@ -6,6 +6,3 @@ easy_admin:
 #        - App\Entity\User
          - App\Entity\User
     site_name: 'Administration des <em style="font-size: 80%;">utilisateurs</em>'
-    design:
-            brand_color: 'red'
-            
